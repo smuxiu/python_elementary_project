@@ -1,0 +1,101 @@
+num = 10                # defind the target number
+count = 5               # defind the count number
+
+print("guess the number?")
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
+a = input()
+count = count - 1
+if a < num and count > 0:
+    print"the number you have guess is small. guess again"
+    print count
+    print "times left"
+elif a > num and count > 0:
+    print"the number you have guess is too big. guess again"
+    print count
+    print "times left"
+elif a == num and count > 0:
+    print"you are right,you win!"
+elif count <= 0:
+    print "game over"
+    raw_input()
+
