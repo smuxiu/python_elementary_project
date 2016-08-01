@@ -1,101 +1,107 @@
-num = 10                # defind the target number
-count = 5               # defind the count number
+# -*-coding:utf-8-*-
+#this program was developed by zhangzheng.
 
-print("guess the number?")
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
+print "input your name first:",
+name = raw_input()
+score = ""
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
+#��ȡ��Ҵ浵
+f=file("guessthenumber_playerprofile.txt")
+lines = f.readlines()
+f.close()
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
+scores = {}     #���ζ�ȡ��Ϸ�浵���ÿһ�в�д��scores�ʵ���.
+for i in lines:  #���ζ�ȡ�浵��ÿһ�����ݵ�i
+    s = i.split()   #��ÿһ�����ݰ��ո�����list
+    scores[s[0]] = s[1:] #��scores������ֵ����������֣�����ֵ��
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
+score = scores.get(name)   #��scores����ֵ����ȡָ����ҵ�����
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
+#��������ڵ�ǰ��ң����½�һ����������
+if score == None:
+    score = [0,0,0,0]
+    print "\nplayer \"%s\" isn't found, press any key to generation a new profile for \"%s\"." %(name,name)
+else :
+    print "\nwelcome back, %s" %name
 
-a = input()
-count = count - 1
-if a < num and count > 0:
-    print"the number you have guess is small. guess again"
-    print count
-    print "times left"
-elif a > num and count > 0:
-    print"the number you have guess is too big. guess again"
-    print count
-    print "times left"
-elif a == num and count > 0:
-    print"you are right,you win!"
-elif count <= 0:
-    print "game over"
-    raw_input()
 
+game_times = int(score[0])
+min_times = int(score[1])
+total_times = int(score[2])
+avg_times = 0.0
+if game_times > 0:
+    avg_times = float(total_times) / game_times
+else:
+    ave_times = 0
+single_times = 0
+fail_times = int(score[3])
+
+raw_input()
+print "%s, you have totally played %d times, the min try times is %d, avg times is %.1f, failed " \
+      "%d times." %(name,game_times,min_times,avg_times,fail_times)
+
+from random import randint  #��ε���һ��ģ��ͷ���:  from ģ�� import ����
+
+num = randint (1,20)     #����һ��1-20���������
+count = 10
+a = 100
+aa = 0
+
+raw_input()
+print "guess the number please: (range:1-20)"
+
+while a!=num:
+    a = raw_input()
+    for i in a:        #�������������ַ�,һλһλ�Ĵ����쳣,��ֹ��������������������ַ�
+        try:
+            aa = int(i)
+        except:
+            print "you have to input a number! so please input again:"
+            a = raw_input()
+
+
+    a = int(a)
+
+
+    count = count - 1
+    single_times += 1
+
+    if a > num and count > 0 :
+        print "the number \'%d\' you have guess is too large. so guess again, %s"  %(a,name)  #�����ڱ���ΪԪ��
+        print "you have %d times left" %count     #ʹ��%d��ʽ��count����ֵ
+    elif a < num and count > 0 :
+        print "the number \'%d\' you have guess is too small. so guess again, %s"  %(a,name)
+        print "you have " + str(count) + " times left"  #ʹ��str()��count����ֵת��Ϊstring.
+    elif a == 1024 :   #����1024�����ײ���ʾʵ��Ҫ�µ����ֲ�����ѭ��
+        print "cheat: the number is %d" %num
+        break
+    elif count <= 0 :
+        print "game over"
+        fail_times += 1
+        break
+if a == 1024 :
+    print "you cheated, game over."
+    fail_times += 1
+elif a == num :
+    print "you win! the number %d you have guess is the correct!!!"  %num
+    print "\nresult: try %d times\n\n\n\n" %single_times
+
+if game_times == 0 or single_times < min_times:
+    min_times = single_times
+total_times += single_times
+game_times += 1
+
+#��Ϸ����������ã�
+scores[name] = [str(game_times),str(min_times),str(total_times),str(fail_times)] #������Ϸ���ݲ�д���ֵ�
+
+result = ""
+
+for i in scores:
+    line = i +" "+" ".join(scores[i]) + "\n"
+    result += line  
+
+f=file("guessthenumber_playerprofile.txt","w")
+f.write(result)
+f.close()
+ 
